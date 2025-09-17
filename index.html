@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Responsive Sidebar</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Toggle Button -->
+  <button id="toggleBtn" class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar" aria-hidden="false">
+    <div class="logo">🌟</div>
+    <nav>
+      <ul>
+        <li><a href="#"><span class="icon">🏠</span>Home</a></li>
+        <li><a href="#"><span class="icon">ℹ️</span>About</a></li>
+        <li><a href="#"><span class="icon">💼</span>Services</a></li>
+        <li><a href="#"><span class="icon">📞</span>Contact</a></li>
+        <li><a href="#"><span class="icon">⚙️</span>Settings</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay" aria-hidden="true"></div>
+
+  <!-- Main Content -->
+  <main class="content">
+    <h1>Welcome</h1>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

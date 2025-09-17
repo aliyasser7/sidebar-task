@@ -1,0 +1,123 @@
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --accent: #2563eb;      /* blue */
+  --accent-dark: #1d4ed8; /* darker blue */
+  --bg: #f9fafb;          /* light gray background */
+  --white: #fff;
+  --overlay: rgba(0,0,0,0.45);
+  --font: 'Poppins', sans-serif;
+}
+
+/* Page layout */
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  color: #1f2937; /* dark gray */
+}
+
+/* Toggle button */
+.toggle-btn {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 10px 14px;
+  font-size: 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background 0.2s;
+}
+.toggle-btn:hover { background: var(--accent-dark); }
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background: var(--accent);
+  color: var(--white);
+  padding: 22px;
+  transform: translateX(-110%); /* hidden by default */
+  transition: transform 280ms cubic-bezier(.2,.8,.2,1);
+  z-index: 1050;
+}
+
+.sidebar .logo {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar ul { list-style: none; }
+
+.sidebar li { margin-bottom: 22px; }
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.sidebar a:hover { background: rgba(255,255,255,0.15); }
+
+/* Active classes */
+.sidebar.active { transform: translateX(0); }
+.sidebar.collapsed { transform: translateX(-110%); }
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  display: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.overlay.active { display: block; opacity: 1; }
+
+/* Content */
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 240px; /* desktop space */
+  transition: margin-left 280ms;
+}
+
+.content h1 {
+  font-size: clamp(32px, 5vw, 56px); /* responsive scaling */
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Desktop layout */
+@media (min-width: 769px) {
+  .sidebar { transform: translateX(0); }
+  .sidebar.collapsed { transform: translateX(-110%); }
+  .content.shift { margin-left: 0; }
+  .overlay { display: none !important; }
+}
+
+@media (max-width: 768px) {
+  .content { margin-left: 0; }
+}
